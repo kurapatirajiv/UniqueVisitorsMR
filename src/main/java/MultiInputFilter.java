@@ -39,9 +39,12 @@ public class MultiInputFilter {
 
         MultipleInputs.addInputPath(job, new Path(args[1]),
                 TextInputFormat.class, FBMapper.class);
-        
+
         // Set the Output file Path
         FileOutputFormat.setOutputPath(job, new Path(args[2]));
+
+        // Set the number of reducers
+        job.setNumReduceTasks(0);
 
         job.setOutputKeyClass(Text.class);
         job.setOutputValueClass(Text.class);
